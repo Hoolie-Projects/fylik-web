@@ -1,0 +1,225 @@
+@import "mixins"
+
+*
+  box-sizing: border-box
+  outline: none
+  -webkit-tap-highlight-color: transparent
+
+::selection
+  background: rgba($primary-color, .2)
+
+html, body
+  width: 100%
+  height: 100%
+  margin: 0
+  padding: 0
+
+body
+  min-height: 100%
+  font: 1em/1.4em 'Product Sans', sans-serif
+  user-select: none
+  background: #f1f1f1
+
+  @media(prefers-color-scheme: dark)
+    background: #263238
+    color: #eee
+
+  img, svg, iframe, audio, video
+    display: block
+    max-width: 100%
+    width: 100%
+    height: auto
+
+  a
+    text-decoration: none
+    color: $primary-color
+    transition: .21s
+
+    &:hover
+      color: darken($secondary-color, 10%)
+
+      @media(prefers-color-scheme: dark)
+        color: #eee
+
+  @import "typography"
+  @import "inputs"
+  @import "classes"
+  @import "transitions"
+
+  .Notification
+    position: fixed
+    z-index: 60
+    right: 30px
+    bottom: 30px
+    background: #fff
+    box-shadow: 1px 3px 5px rgba(#666, .3)
+    padding: 10px 15px
+    border-radius: 8px
+    width: calc(100% - 30px - 30px)
+    max-width: 350px
+    transition: .32s cubic-bezier(.32,2.83,.64,1)
+
+    @media(prefers-color-scheme: dark)
+      background: #263238
+
+    .title
+      font-weight: bold
+      font-size: 14pt
+
+  #root
+    display: flex
+    flex-direction: column
+    height: 100%
+    min-height: 100%
+
+    header,
+    footer
+      display: flex
+      align-items: center
+      flex-shrink: 0
+      width: 100%
+      gap: 20px
+      background: #fff
+      padding: 0 20px
+
+      @media(prefers-color-scheme: dark)
+        background: #37474F
+
+    header
+      position: fixed
+      top: 0
+      height: $header-height
+      border-bottom: 1px solid #eaeaea
+      z-index: 5
+
+      @media(prefers-color-scheme: dark)
+        border-bottom: none
+
+      img.Logo
+        width: 40px
+
+        @media(max-width: 640px)
+          display: none
+
+      .headers
+        display: flex
+        align-items: center
+
+        h1, h2
+          margin: 0
+
+        h1
+          font-size: 18pt
+
+          @media(prefers-color-scheme: dark)
+            color: #fff
+
+        span, h2
+          @media(max-width: 580px)
+            display: none !important
+
+        span
+          display: block
+          margin: 0 5px
+
+          @media(prefers-color-scheme: dark)
+            color: #fff
+
+        h2
+          font-weight: normal
+          font-size: 14pt
+          color: #555
+          text-transform: capitalize
+
+          @media(prefers-color-scheme: dark)
+            color: #eee
+
+      .buttons
+        display: flex
+        gap: 5px
+        margin-left: auto
+
+        button.UploadButton
+
+          & > span
+            text-transform: capitalize
+
+      .fileUploadingProgress
+        position: absolute
+        bottom: 0
+        left: 0
+        width: 0
+        height: 3px
+        background: $primary-color
+        transition: .32s
+
+    .page-wrapper
+      width: 100%
+      max-width: 1000px
+      margin: auto
+      padding: 20px
+      padding-top: calc(20px + $header-height)
+
+      .files-grid
+        display: grid
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
+        align-items: stretch
+        gap: 20px
+
+    footer
+      border-top: 1px solid #eaeaea
+      font-size: 10pt
+      padding: 10px 20px
+
+      @media(prefers-color-scheme: dark)
+        border-top: none
+
+      @media(max-width: 580px)
+        flex-direction: column
+
+      .links
+        display: flex
+        gap: 15px
+
+        a
+          display: block
+
+      .copyright
+        margin-left: auto
+
+        @media(max-width: 580px)
+          margin-left: 0
+
+    .file-uploading-popup
+
+      .drop-zone
+        display: flex
+        flex-direction: column
+        align-items: center
+        background: #f2f2f2
+        border: 5px dashed #e9e9e9
+        padding: 50px
+        text-align: center
+
+        @media(prefers-color-scheme: dark)
+          background: #263238
+          border-color: #546E7A
+
+        & > svg
+          width: 70px
+
+          @media(prefers-color-scheme: dark)
+            fill: #fff
+
+        .hint
+          margin-top: 10px
+          font-weight: bold
+          font-size: 14pt
+
+        .or
+          margin-top: 15px
+          color: #aaa
+          font-size: 10pt
+
+        & > button
+          margin-top: 15px

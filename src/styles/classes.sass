@@ -1,0 +1,17 @@
+$mobile-width: 768px
+$wide-width: 1200px
+
+.__hide-on-mobile
+  
+  @media(max-width: $mobile-width)
+    display: none !important
+
+.__show-on-mobile
+  
+  @media(min-width: $mobile-width)
+    display: none !important
+
+.__show-on-wide
+  
+  @media(max-width: $wide-width)
+    display: none !important
